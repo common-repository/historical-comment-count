@@ -1,0 +1,27 @@
+<h3><a href="<?php echo $url; ?>"><?php _e('Historical Comment Count'); ?></a>: Monthly Totals</h3>
+<p>
+	The following is the number of approved comments on this blog over the last few months.
+</p>
+	<table class="widefat" style="width: 80%;">
+		<tr>
+			<td width="200"><strong>Year-Month</strong></td>
+			<td><strong>Comments</strong></td>
+			<td align="right" width="300"><strong>Page: <?php echo $navigation; ?></strong></td>
+		</tr>
+		<?php
+			foreach($numbers as $key=>$value)
+			{
+				?>
+				<tr>
+					<td><?php echo $key; ?></td>
+					<td><?php echo $value['count']; ?></td>
+					<td align="right">
+						<a href="<?php echo $url; ?>&action=popular&date=<?php echo $key; ?>">Popular Posts</a> | 
+						<a href="<?php echo $url; ?>&action=daily&date=<?php echo $key; ?>">Daily Totals</a> | 
+						<a href="<?php echo $url; ?>&action=read&date=<?php echo $key; ?>">Read Comments</a>
+					</td>
+				</tr>
+				<?php
+			}
+		?>
+	</table>

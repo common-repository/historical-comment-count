@@ -1,0 +1,26 @@
+<h3><a href="<?php echo $url; ?>"><?php _e('Historical Comment Count'); ?></a>: Read Comments</h3>
+<p>
+	The following is the number of approved comments on this blog for: <strong><?php echo $datestamp; ?></strong>.
+</p>
+	<table class="widefat" style="width: 80%;">
+		<tr>
+			<td width="100"><strong>Date</strong></td>
+			<td><strong>Comments</strong></td>
+			<td align="right" width="200"><strong>Page: <?php echo $navigation; ?></strong></td>
+		</tr>
+		<?php
+			foreach($result as $comment)
+			{
+				?>
+				<tr>
+					<td><?php echo $comment->comment_date; ?></td>
+					<td><strong><?php echo $comment->comment_author; ?></strong>: <?php echo $comment->comment_content; ?></td>
+					<td align="right">
+						<a href="/wp-admin/comment.php?action=editcomment&c=<?php echo $comment->comment_ID; ?>">Edit</a> |
+						<a href="/wp-admin/edit-comments.php?p=<?php echo $comment->comment_post_ID; ?>">Thread</a> 
+					</td>
+				</tr>
+				<?php
+			}
+		?>
+	</table>

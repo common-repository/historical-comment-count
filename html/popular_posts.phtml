@@ -1,0 +1,26 @@
+<h3><a href="<?php echo $url; ?>"><?php _e('Historical Comment Count'); ?></a>: Most Popular Posts</h3>
+<p>
+	The most frequently commented posts from: <strong><?php echo $datestamp; ?></strong>.
+</p>
+	<table class="widefat" style="width: 80%;">
+		<tr>
+			<td><strong>Post</strong></td>
+			<td width="100"><strong>Comments</strong></td>
+			<td align="right" width="200"><strong>Page: <?php echo $navigation; ?></strong></td>
+		</tr>
+		<?php
+			foreach($sorted_posts as $post)
+			{
+				?>
+				<tr>
+					<td><strong><?php echo $post->post_title; ?></strong>: <?php echo substr(strip_tags($post->post_content), 0, 200); ?>...</td>
+					<td><?php echo $post->numComments; ?></td>
+					<td align="right">
+						<a href="/?p=<?php echo $post->ID; ?>">View</a> | 
+						<a href="/wp-admin/edit-comments.php?p=<?php echo $post->ID; ?>">Comments</a> 
+					</td>
+				</tr>
+				<?php
+			}
+		?>
+	</table>
